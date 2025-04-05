@@ -1,0 +1,18 @@
+volumes:
+- name: docker-sock
+  hostPath:
+    path: /var/run/docker.sock
+- name: jenkins-data
+  hostPath:
+    path: /k8s/var/jenkins_home
+    type: DirectoryOrCreate
+
+ingress:
+  enabled: true
+  host: njenkins.entto.shop
+  tls: true
+
+namespace: deploy
+
+nodeSelector:
+  type: deploy

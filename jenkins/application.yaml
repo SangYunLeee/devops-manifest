@@ -1,0 +1,10 @@
+project: default
+source:
+  repoURL: https://github.com/SangYunLeee/devops-manifest.git
+  path: jenkins
+  targetRevision: HEAD
+  helm:
+    valueFiles:
+      - values.yaml
+destination:
+  server: https://kubernetes.default.svc
