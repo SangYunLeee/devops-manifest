@@ -1,10 +1,16 @@
-project: default
-source:
-  repoURL: https://github.com/SangYunLeee/devops-manifest.git
-  path: postgres
-  targetRevision: HEAD
-  helm:
-    valueFiles:
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
       - values.yaml
-destination:
-  server: https://kubernetes.default.svc
+    path: postgres
+    repoURL: https://github.com/SangYunLeee/devops-manifest.git
+    targetRevision: HEAD
