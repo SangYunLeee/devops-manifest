@@ -5,7 +5,7 @@ image:
   tag: 15
 
 nodeSelector:
-  database: true
+  database: "true"
 
 env:
   - name: POSTGRES_USER
@@ -25,9 +25,10 @@ resources:
 
 volumes:
   - name: data
-    type: hostPath
-    hostPath: /k8s/db/postgres/data
+    hostPath:
+      path: /k8s/db/postgres/data
+      type: DirectoryOrCreate
 
 service:
   type: NodePort
-  nodePort: 20000
+  nodePort: 30010
