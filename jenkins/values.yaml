@@ -1,11 +1,11 @@
 volumes:
-- name: docker-sock
-  hostPath:
-    path: /var/run/docker.sock
-- name: jenkins-data
-  hostPath:
-    path: /k8s/var/jenkins_home
-    type: DirectoryOrCreate
+  - name: docker-sock
+    hostPath:
+      path: /var/run/docker.sock
+  - name: jenkins-data
+    hostPath:
+      path: /k8s/var/jenkins_home
+      type: DirectoryOrCreate
 
 ingress:
   enabled: true
@@ -16,3 +16,7 @@ namespace: deploy
 
 nodeSelector:
   type: deploy
+
+image:
+  repository: sororiri/jenkins
+  tag: 0.0.3

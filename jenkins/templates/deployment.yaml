@@ -23,7 +23,7 @@ spec:
       serviceAccountName: jenkins-admin
       containers:
         - name: jenkins
-          image: sororiri/jenkins:0.0.3
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           resources:
             limits:
               memory: "2Gi"
