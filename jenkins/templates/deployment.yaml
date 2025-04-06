@@ -18,8 +18,8 @@ spec:
       nodeSelector:
         {{ toYaml .Values.nodeSelector }}
       securityContext:
-        fsGroup: 1000
-        runAsUser: 1000
+        runAsUser: 0
+        fsGroup: 0
       serviceAccountName: jenkins-admin
       containers:
         - name: jenkins
