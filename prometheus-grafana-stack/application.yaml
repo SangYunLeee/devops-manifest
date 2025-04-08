@@ -1,19 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-application
+  name: prometheus-grafana-stack
   namespace: argocd
 spec:
   destination:
-    namespace: monitoring
     server: https://kubernetes.default.svc
+    namespace: monitoring
   project: default
-  sources:
-  - directory:
-      recurse: true
-    path: prometheus-stack/helm
-    repoURL: https://github.com/SangYunLeee/devops-package.git
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: prometheus-grafana-stack
+    repoURL: https://github.com/SangYunLeee/devops-manifest.git
     targetRevision: HEAD
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
