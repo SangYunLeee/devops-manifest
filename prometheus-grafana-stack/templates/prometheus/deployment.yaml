@@ -17,10 +17,10 @@ spec:
         app: prometheus
     spec:
       nodeSelector:
-        type: monitoring
+        {{ toYaml .Values.prometheus.nodeSelector }}
       securityContext:
-        fsGroup: 1000
-        runAsUser: 1000
+        runAsUser: 0
+        fsGroup: 0
       containers:
       - name: prometheus
         image: "{{ .Values.prometheus.image.repository }}:{{ .Values.prometheus.image.tag }}"
@@ -45,6 +45,4 @@ spec:
       - name: config
         configMap:
           name: prometheus-config
-      - name: data
-        persistentVolumeClaim:
-          claimName: prometheus-data-pvc
+      {{- toYaml .Values.prometheus.volumes | nindent 6 }}
