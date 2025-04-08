@@ -3,7 +3,7 @@ prometheus:
     repository: prom/prometheus
     tag: v2.45.0
   port: 9090
-  nodePort: 32000
+  nodePort: 31000
   nodeSelector:
     monitoring: "true"
   volumes:
@@ -26,3 +26,9 @@ nodeExporter:
   nodePort: 32002
 slack:
   token: TOBE_UPDATED
+
+ingress:
+  prometheus:
+    host: prometheus.entto.shop
+  grafana:
+    host: grafana.entto.shop
