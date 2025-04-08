@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-contact-points
+  namespace: monitoring
+data:
+  contact-points.yaml: |
+    apiVersion: 1
+    contactPoints:
+        - orgId: 1
+          name: ontact_slack
+          receivers:
+            - uid: aefp06goaq0oxc
+              type: slack
+              settings:
+                recipient: monitoring
+                token: {{ .Values.slack.token }}
+              disableResolveMessage: false
