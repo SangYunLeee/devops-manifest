@@ -29,6 +29,6 @@ slack:
 
 ingress:
   prometheus:
-    host: prometheus.entto.shop
+    host: prometheus.memou.shop
   grafana:
-    host: grafana.entto.shop
+    host: grafana.memou.shop
