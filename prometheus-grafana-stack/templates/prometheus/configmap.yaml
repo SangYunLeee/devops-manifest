@@ -10,6 +10,7 @@ data:
       - job_name: 'prometheus'
         static_configs:
           - targets: ['localhost:{{ .Values.prometheus.port }}']
+
       - job_name: 'node-exporter'
         kubernetes_sd_configs:
           - role: endpoints
@@ -56,6 +57,7 @@ data:
             regex: (.+)
             target_label: __metrics_path__
             replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+
       - job_name: 'kubernetes-pods'
         kubernetes_sd_configs:
         - role: pod
@@ -80,6 +82,7 @@ data:
         - source_labels: [__meta_kubernetes_pod_name]
           action: replace
           target_label: kubernetes_pod_name
+
       - job_name: 'kubernetes-service-endpoints'
         kubernetes_sd_configs:
         - role: endpoints
