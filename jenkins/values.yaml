@@ -9,7 +9,7 @@ volumes:
 
 ingress:
   enabled: true
-  host: njenkins.entto.shop
+  host: njenkins.memou.shop
   tls: true
 
 namespace: deploy
